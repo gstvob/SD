@@ -1,0 +1,14 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity PartII is
+port( CLOCK_50 : in std_logic;
+		SW : in (15 downto 0);
+		HEX2, HEX3, HEX4, HEX5, HEX6, HEX7 : out std_logic_vector(6 downto 0);
+);
+end;
+
+architecture PartII_behv of PartII is 
+begin
+		
+end architecture;

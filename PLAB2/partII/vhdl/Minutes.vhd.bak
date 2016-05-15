@@ -1,0 +1,29 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity Minutes is
+port(	en, Clk : in std_logic;
+		inp1, inpt2  : in std_logic_vector(3 downto 0);
+		o1, o2 : out std_logic_vector(3 downto 0);
+		hour : out std_logic;
+);
+end;
+
+architecture minutes_behv of minutes is
+signal in1, in2 : std_logic_vector(3 downto 0);
+begin
+	in1 <= inp1;
+	in2 <= inp2;
+	process(Clk,Rst)
+	begin
+		if Rst = '1' then
+			in1 <= (others=>'0');
+			in2 <= (others=>'0');
+		elsif rising_edge(clk) then
+			hour = '0';
+			if en = '1' and unsigned(in1) < 9 then
+				in1 <= 
+	end process;
+
+end;

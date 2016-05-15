@@ -1,0 +1,37 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity Seconds is
+port(	Clk, Rst: in std_logic;
+		o1: out std_logic_vector(2 downto 0);
+		o2: out std_logic_vector(3 downto 0);
+		min : out std_logic;);
+end;
+
+architecture Seconds_behv of seconds is 
+signal in1 : std_logic_vector(2 downto 0); 
+signal in2 : std_logic_vector(3 downto 0);
+begin
+	
+	process(Clk, Rst)
+	begin
+		if Rst = '1' then
+			in1 <= (others=> '0');
+			in2 <= (others=> '0');
+		elsif rising_edge(Clk) then
+			min <= '0';
+			if unsigned(in1) < 5 then
+				in1 <= std_logic_vector(unsigned(in1) + 1);
+			elsif unsigned(in2) < 9 then
+				in1 <= (others=>'0');
+				in2 <= std_logic_vector(unsigned(in2) + 1);
+			elsif unsigned(in1) >= 5 and unsigned(in2) >= 9 then
+				min <= '1';
+				in1 <= (others=>'0');
+				in2 <= (others=>'0');
+			end if;
+		end if;
+	end process;
+	o1 <= in1;
+	o2 <= in2;
+end architecture;
